@@ -1,50 +1,79 @@
 export const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-stack online shopping platform with cart functionality, user authentication, and payment integration.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Express'],
-    github: 'https://github.com/yourusername/ecommerce',
-    demo: 'https://ecommerce-demo.vercel.app'
+    title: 'BisaQuest',
+    description: 'A team-based project focused on building an interactive application while practicing collaboration, planning, and development workflows.',
+    role: 'Team Lead',
+    tech: {
+      frontend: 'React, Vite',
+      backend: 'Node.js, Express, Supabase'
+    },
+    github: 'https://github.com/Nagazta/BisaQuest',
+    demo: null,
+    status: 'ongoing'
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'Collaborative task management tool with real-time updates, drag-and-drop interface, and team workspaces.',
-    techStack: ['React', 'TypeScript', 'Firebase', 'CSS Modules'],
-    github: 'https://github.com/yourusername/task-manager',
-    demo: 'https://task-manager-demo.vercel.app'
+    title: 'Hacktoberfest 2025 Project',
+    description: 'A collaborative open-source project created for Hacktoberfest, emphasizing teamwork, contribution flow, and project coordination.',
+    role: 'Team Lead',
+    tech: {
+      tools: 'Hardhat, Lisk, Python'
+    },
+    github: 'https://github.com/Edrian496/Hacktoberfest-2025',
+    demo: null,
+    status: 'ongoing'
   },
   {
     id: 3,
-    title: 'Weather Dashboard',
-    description: 'Real-time weather application with location-based forecasts, interactive maps, and weather alerts.',
-    techStack: ['React', 'Weather API', 'Chart.js', 'Geolocation'],
-    github: 'https://github.com/yourusername/weather-app',
-    demo: 'https://weather-demo.vercel.app'
+    title: 'RoadWatch',
+    description: 'A web-based reporting platform designed to help users submit and track road-related incidents with role-based access control, structured data handling, and team-driven development.',
+    role: 'Dev Lead',
+    tech: {
+      frontend: 'React, Vite',
+      backend: 'Java Spring Boot, Supabase'
+    },
+    github: 'https://github.com/Nagazta/RoadWatch-IT342-G01-Group10',
+    demo: 'https://roadwatch-it342-g01-group10-1.onrender.com/',
+    status: 'deployed'
   },
   {
     id: 4,
-    title: 'Portfolio Generator',
-    description: 'A tool that helps developers create beautiful portfolios using customizable templates and themes.',
-    techStack: ['React', 'Vite', 'CSS Modules', 'Local Storage'],
-    github: 'https://github.com/yourusername/portfolio-generator',
-    demo: 'https://portfolio-gen-demo.vercel.app'
+    title: 'Patuti',
+    description: 'A solo project built to explore modern frontend workflows and deployment using a clean and responsive UI.',
+    role: 'Solo Developer',
+    tech: {
+      frontend: 'React, Vite',
+      tools: 'Vercel'
+    },
+    github: 'https://github.com/Nagazta/patuti',
+    demo: 'https://patuti-ricyg51c2-kyless.vercel.app/',
+    status: 'deployed'
   },
   {
     id: 5,
-    title: 'Code Snippet Manager',
-    description: 'Save, organize, and search your code snippets with syntax highlighting and tagging system.',
-    techStack: ['React', 'IndexedDB', 'Prism.js', 'PWA'],
-    github: 'https://github.com/yourusername/snippet-manager',
-    demo: 'https://snippet-demo.vercel.app'
+    title: 'TechnoServe',
+    description: 'A group project focused on delivering a functional service-based web application while managing team collaboration and technical direction.',
+    role: 'Dev Lead',
+    tech: {
+      frontend: 'HTML',
+      backend: 'Python, Django, Supabase'
+    },
+    github: 'https://github.com/Nagazta/CSIT327-G7-TechnoServe',
+    demo: 'https://csit327-g7-technoserve.onrender.com/',
+    status: 'deployed'
   },
   {
     id: 6,
-    title: 'Fitness Tracker',
-    description: 'Track workouts, set goals, and visualize progress with charts and statistics.',
-    techStack: ['React', 'Chart.js', 'Local Storage', 'Responsive'],
-    github: 'https://github.com/yourusername/fitness-tracker',
-    demo: 'https://fitness-demo.vercel.app'
+    title: 'Freedom Wall',
+    description: 'A side project that allows anonymous expression through a simple and clean interface, emphasizing accessibility and user interaction.',
+    role: 'Solo Developer',
+    tech: {
+      frontend: 'React',
+      tools: 'Netlify'
+    },
+    github: 'https://github.com/Nagazta/freedom-wall',
+    demo: 'https://soft-rebirth.netlify.app/',
+    status: 'deployed'
   }
 ];

@@ -4,14 +4,22 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      title: 'Bachelor of Science in Computer Science',
-      organization: 'CIT-Cebu (CIT University)',
-      date: '2023 - 2026',
+      title: 'Bachelor of Science in Information Technology',
+      organization: 'Asian College of Technology - Cebu',
+      date: '2022 - 2023',
+      description: '1st year student, transferred to Cebu Institute of Technology - University.',
+      type: 'education'
+    },
+{
+      id: 2,
+      title: 'Bachelor of Science in Information Technology',
+      organization: 'Cebu Institute of Technology - University',
+      date: '2024 - 2026',
       description: '3rd year student, expected graduation first semester next year.',
       type: 'education'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Core Volunteer',
       organization: 'PizzaPy',
       date: '2025 - Present',
@@ -19,7 +27,7 @@ const Experience = () => {
       type: 'volunteer'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Core Member',
       organization: 'Google Developer Groups Cebu',
       date: '2025 - Present',
@@ -27,7 +35,7 @@ const Experience = () => {
       type: 'volunteer'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Technical Volunteer',
       organization: 'DOHE Philippines',
       date: '2024 - Present',
@@ -35,7 +43,7 @@ const Experience = () => {
       type: 'volunteer'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Website Team Member',
       organization: 'SEDS Philippines',
       date: '2024 - Present',
@@ -43,7 +51,7 @@ const Experience = () => {
       type: 'volunteer'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Volunteer',
       organization: 'AI Pilipinas Cebu',
       date: '2024',
@@ -51,7 +59,7 @@ const Experience = () => {
       type: 'volunteer'
     },
     {
-      id: 7,
+      id: 8,
       title: 'Volunteer',
       organization: 'JavaScript Cebu',
       date: '2024',

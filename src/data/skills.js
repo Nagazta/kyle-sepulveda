@@ -16,7 +16,7 @@ export const skills = {
     'FastAPI',
     'Python',
     'Django',
-    'MongoDB',
+    'Supabase',
     'PostgreSQL'
   ],
   tools: [
