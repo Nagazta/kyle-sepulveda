@@ -1,0 +1,126 @@
+.experience {
+  padding: var(--section-padding) 0;
+  background-color: var(--bg-secondary);
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-primary);
+}
+
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--border);
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: 60px;
+  padding-bottom: 3rem;
+}
+
+.timelineItem:last-child {
+  padding-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  left: 11px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 3px solid var(--bg-secondary);
+  box-shadow: var(--glow-subtle);
+  z-index: 1;
+}
+
+.timelineContent {
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: all var(--transition-normal);
+}
+
+.timelineContent:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.timelineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.date {
+  color: var(--accent-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.organization {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timelineItem {
+    padding-left: 40px;
+  }
+
+  .timelineDot {
+    left: 1px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .timelineContent {
+    padding: 1.5rem;
+  }
+
+  .timelineContent:hover {
+    transform: translateY(-4px);
+  }
+
+  .timelineHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
