@@ -64,8 +64,12 @@
     gap: 3rem;
   }
 
-  .highlights {
+  .text {
     grid-row: 1;
+  }
+
+  .highlights {
+    grid-row: 2;
   }
 }
 

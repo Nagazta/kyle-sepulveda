@@ -7,6 +7,7 @@ import Projects from './sections/Projects';
 import ProjectsTimeline from './sections/ProjectsTimeline';
 import Experience from './sections/Experience';
 import Contact from './sections/Contact';
+import Chatbot from './components/chatbot/Chatbot';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <Chatbot />
     </>
   );
 }

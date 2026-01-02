@@ -321,6 +321,7 @@ const ProjectsTimeline = () => {
                     return (
                       <div
                         key={month}
+                        data-month={month}
                         className={`${styles.monthCell} ${isActive ? styles.active : ''}`}
                       >
                         {isActive && (
