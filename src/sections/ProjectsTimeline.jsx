@@ -257,9 +257,16 @@ const ProjectsTimeline = () => {
                 <div className={styles.projectInfo}>
                   <div className={styles.projectHeader}>
                     <h3 className={styles.projectName}>{project.name}</h3>
-                    <span className={`${styles.statusBadge} ${getStatusColor(project.status)}`}>
-                      {project.status}
-                    </span>
+                    <div className={styles.badges}>
+                      {project.isPrivate && (
+                        <span className={styles.privateBadge}>
+                          Private
+                        </span>
+                      )}
+                      <span className={`${styles.statusBadge} ${getStatusColor(project.status)}`}>
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
                   <p className={styles.projectRole}>{project.role}</p>
                   <div className={styles.projectMeta}>

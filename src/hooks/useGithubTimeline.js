@@ -50,9 +50,10 @@ const useGithubTimeline = (username = 'Nagazta') => {
           ? { Authorization: `Bearer ${token}` }
           : {};
 
-        // Fetch repositories
+        // Fetch repositories (including private ones)
+        // Using /user/repos instead of /users/{username}/repos to include private repos
         const reposResponse = await fetch(
-          `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`,
+          `https://api.github.com/user/repos?per_page=100&sort=updated&affiliation=owner`,
           { headers }
         );
 
@@ -62,6 +63,10 @@ const useGithubTimeline = (username = 'Nagazta') => {
 
         const repos = await reposResponse.json();
 
+        // Debug: Log repository count and private repo count
+        const privateCount = repos.filter(r => r.private).length;
+        console.log(`📊 Fetched ${repos.length} total repos (${privateCount} private, ${repos.length - privateCount} public)`);
+
         // Process each repository
         const processedRepos = await Promise.all(
           repos
@@ -69,16 +74,20 @@ const useGithubTimeline = (username = 'Nagazta') => {
             .map(async (repo) => {
               try {
                 // Fetch commits for activity analysis
+                // Use repo.owner.login to handle private repos correctly
                 const commitsResponse = await fetch(
-                  `https://api.github.com/repos/${username}/${repo.name}/commits?per_page=100`,
+                  `https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=100`,
                   { headers }
                 );
 
-                const commits = commitsResponse.ok ? await commitsResponse.json() : [];
+                // Handle 409 Conflict (empty repository with no commits)
+                const commits = commitsResponse.ok && commitsResponse.status !== 409
+                  ? await commitsResponse.json()
+                  : [];
 
                 // Fetch languages
                 const languagesResponse = await fetch(
-                  `https://api.github.com/repos/${username}/${repo.name}/languages`,
+                  `https://api.github.com/repos/${repo.owner.login}/${repo.name}/languages`,
                   { headers }
                 );
 
@@ -100,17 +109,42 @@ const useGithubTimeline = (username = 'Nagazta') => {
 
                 const monthsSinceLastCommit = (now - lastCommitDate) / (30 * 24 * 60 * 60 * 1000);
 
+                // Check for deployment indicators
+                const hasHomepage = repo.homepage && repo.homepage.trim() !== '';
+                const hasPages = repo.has_pages; // GitHub Pages enabled
+                const hasDeploymentTopics = repo.topics?.some(topic =>
+                  ['deployed', 'live', 'production', 'netlify', 'vercel', 'heroku', 'render'].includes(topic.toLowerCase())
+                );
+
+                // Check repository name for deployment indicators
+                const repoNameLower = repo.name.toLowerCase();
+                const repoNameIndicatesDeployment = repoNameLower.includes('portfolio') ||
+                                                     repoNameLower.includes('website') ||
+                                                     repo.name === `${username}.github.io`;
+
+                // Check description for deployment URLs (more comprehensive)
+                const description = (repo.description || '').toLowerCase();
+                const hasDeploymentUrl = description.includes('netlify') ||
+                                       description.includes('vercel') ||
+                                       description.includes('render') ||
+                                       description.includes('heroku') ||
+                                       description.includes('deployed') ||
+                                       description.includes('.app') ||
+                                       description.includes('.io') ||
+                                       description.includes('.com/') ||
+                                       /https?:\/\//.test(description); // Regex for http:// or https://
+
                 let status = 'ongoing';
-                if (repo.homepage) {
+                if (hasHomepage || hasPages || hasDeploymentTopics || repoNameIndicatesDeployment || hasDeploymentUrl) {
                   status = 'live';
                 } else if (monthsSinceLastCommit > 6) {
                   status = 'dormant';
                 }
 
-                // Get top 3 languages
+                // Get top 5 languages
                 const topLanguages = Object.entries(languages)
                   .sort(([, a], [, b]) => b - a)
-                  .slice(0, 3)
+                  .slice(0, 5)
                   .map(([lang]) => lang);
 
                 return {
@@ -127,6 +161,7 @@ const useGithubTimeline = (username = 'Nagazta') => {
                   commitsByMonth,
                   totalCommits: commits.length,
                   stars: repo.stargazers_count,
+                  isPrivate: repo.private, // Add private flag
                 };
               } catch (err) {
                 console.warn(`Failed to fetch details for ${repo.name}:`, err);
@@ -145,6 +180,7 @@ const useGithubTimeline = (username = 'Nagazta') => {
                   commitsByMonth: {},
                   totalCommits: 0,
                   stars: repo.stargazers_count,
+                  isPrivate: repo.private, // Add private flag
                 };
               }
             })

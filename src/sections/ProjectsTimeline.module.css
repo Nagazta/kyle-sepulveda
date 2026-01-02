@@ -356,6 +356,13 @@
 
 /* Status Badges */
 
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .statusBadge {
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
@@ -381,6 +388,18 @@
   background: rgba(148, 163, 184, 0.1);
   color: var(--text-secondary);
   border: 1px solid var(--border);
+}
+
+.privateBadge {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
 }
 
 /* Project Links */
