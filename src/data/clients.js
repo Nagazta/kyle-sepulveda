@@ -1,3 +1,9 @@
+import con1 from '../assets/clientsProjects/con1.png';
+import con2 from '../assets/clientsProjects/con2.png';
+import con3 from '../assets/clientsProjects/con3.png';
+import con4 from '../assets/clientsProjects/con4.png';
+import con5 from '../assets/clientsProjects/con5.png';
+
 export const clients = [
   {
     id: 1,
@@ -7,11 +13,11 @@ export const clients = [
     year: 2026,
     link: 'https://south-cebu-construction.vercel.app/',
     images: [
-      '/src/assets/clientsProjects/con1.png',
-      '/src/assets/clientsProjects/con2.png',
-      '/src/assets/clientsProjects/con3.png',
-      '/src/assets/clientsProjects/con4.png',
-      '/src/assets/clientsProjects/con5.png'
+      con1,
+      con2,
+      con3,
+      con4,
+      con5
     ],
   },
   {
